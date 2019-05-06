@@ -1,7 +1,7 @@
 {
-  "name": "corpus-frontend",
-  "version": "1.1.0",
-  "description": "Corpus frontend javascript code",
+  "name": "wf-reliquary-helper",
+  "version": "0.0.1",
+  "description": "Warframe reliquary extension to add some extra functionality",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,12 @@
     "start": "webpack-dev-server --config webpack.config.dev.js --mode development --port 80",
     "node": "node"
   },
-  "author": "INT",
+  "author": "KCMertens",
   "license": "Apache-2.0",
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
-    "@types/qs": "^6.5.1",
-    "@types/urijs": "^1.15.38",
     "babel-loader": "^8.0.0-beta.6",
     "babel-plugin-transform-es2015-modules-commonjs-simple": "^6.7.4",
     "circular-dependency-plugin": "^5.0.2",

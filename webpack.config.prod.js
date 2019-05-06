@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const package = require('./package.json');
 
 module.exports = {
 	entry: {
@@ -79,12 +79,12 @@ module.exports = {
 		}),
 		new webpack.BannerPlugin(
 `// ==UserScript==
-// @name        Warframe reliquary  helper
+// @name        ${package.name}
 // @namespace   https://github.com/kcmertens/
-// @description Adds some extra checkboxes and features
+// @description ${package.description}
 // @match       https://wf.xuerian.net/*
-// @version     0.0.1
-// @license     MIT
+// @version     ${package.version}
+// @license     ${package.licence}
 // @grant       GM.getValue
 // @grant       GM.setValue
 // @downloadURL https://github.com/KCMertens/wf-reliquery-extension/raw/master/dist/reliquary-extension.user.js
