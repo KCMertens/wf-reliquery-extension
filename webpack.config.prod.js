@@ -7,7 +7,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 module.exports = {
 	entry: {
 		// Output multiple files, one for each main page - important!: also include the polyfills in the output bundle
-		index: [
+		'reliquary-extension.user': [
 			'./src/utils/enable-polyfills.ts',
 			'./src/index.ts'
 		],
@@ -87,6 +87,8 @@ module.exports = {
 // @license     MIT
 // @grant       GM.getValue
 // @grant       GM.setValue
+// @downloadURL https://github.com/KCMertens/wf-reliquery-extension/raw/master/dist/reliquary-extension.user.js
+// @updateURL   https://github.com/KCMertens/wf-reliquery-extension/raw/master/dist/reliquary-extension.user.js
 // ==/UserScript==`)
 	],
 	devtool: 'source-map'
