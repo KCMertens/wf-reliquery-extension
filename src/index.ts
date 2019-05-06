@@ -17,11 +17,16 @@ let uuid = (() => {
     return (key: string) => `${key}_${i++}`;
 })();
 
+function el<T extends HTMLElement = HTMLElement>(s: string) {
+    const html = new DOMParser().parseFromString(s, 'text/html');
+    return html.body.firstChild as T;
+};
+
 function main() {
     for(const [bp, dupedParts] of Object.entries(dupes) as Array<[Blueprint, Blueprint[]]>) {
         dupedParts.forEach(bp => {
             const id = uuid(bp);
-            const node = document.createElement(`<label for="${id}" style="outline: 1px solid red;"><input type="checkbox" value="${bp}" id="${id}"> ${bp} (duplicate)</label>`);
+            const node = el<HTMLLabelElement>(`<label for="${id}" style="outline: 1px solid red;"><input type="checkbox" value="${bp}" id="${id}"> ${bp} (duplicate)</label>`);
 
             // this is the label containing the checkbox
             // we want to append after this node
