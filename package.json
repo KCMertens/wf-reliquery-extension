@@ -1,13 +1,14 @@
 {
   "name": "wf-reliquary-helper",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Warframe reliquary extension to add some extra functionality",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.prod.js --mode production",
     "start": "webpack-dev-server --config webpack.config.dev.js --mode development --port 80",
-    "node": "node"
+    "node": "node",
+    "git-add-dist": "git add dist"
   },
   "author": "KCMertens",
   "license": "Apache-2.0",
@@ -37,6 +38,7 @@
   },
   "dependencies": {},
   "pre-commit": [
-    "build"
+    "build",
+    "git-add-dist"
   ]
 }
