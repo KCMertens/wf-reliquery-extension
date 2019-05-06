@@ -7,7 +7,10 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 module.exports = {
 	entry: {
 		// Output multiple files, one for each main page - important!: also include the polyfills in the output bundle
-		index: ['./src/utils/enable-polyfills.ts', './src/index.ts'],
+		index: [
+			'./src/utils/enable-polyfills.ts',
+			'./src/index.ts'
+		],
 	},
 	output: {
 		filename: '[name].js',
@@ -67,16 +70,6 @@ module.exports = {
 		}]
 	},
 	plugins: [
-		// ProvidePlugin makes modules globally available under certain symbols, for both our own files as well as our imported dependencies.
-		// This is unfortunately required to allow dependencies to augment other dependencies (such as jquery-ui and bootstrap augmenting jquery)
-		// which requires the same instance of jquery to be visible to both the jquery-ui module as our own files
-		// NOTE: the exports of these modules are not made available through the window object in the browser!
-		// To do that, we need to use the expose-loader.
-		// new webpack.ProvidePlugin({
-		// 	'window.jQuery':    'jquery',
-		// 	'jQuery':           'jquery',
-		// 	'$':                'jquery',
-		// }),
 		new ForkTsCheckerWebpackPlugin({
 			vue: true
 		}),
@@ -84,6 +77,17 @@ module.exports = {
 		new CleanWebpackPlugin(['dist'], {
 			verbose: false,
 		}),
+		new webpack.BannerPlugin(
+`// ==UserScript==
+// @name        Warframe reliquary  helper
+// @namespace   https://github.com/kcmertens/
+// @description Adds some extra checkboxes and features
+// @match       https://wf.xuerian.net/*
+// @version     0.0.1
+// @license     MIT
+// @grant       GM.getValue
+// @grant       GM.setValue
+// ==/UserScript==`)
 	],
 	devtool: 'source-map'
 };

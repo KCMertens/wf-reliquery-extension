@@ -59,6 +59,7 @@
 		"paths": {
 			"@/*": ["./*"]
 		},
-		"resolveJsonModule": true
+		"resolveJsonModule": true,
+		"removeComments": false
 	},
 }

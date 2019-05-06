@@ -1,16 +1,3 @@
-/* eslint-disable max-len */
-// ==UserScript==
-// @name        Warframe reliquary  helper
-// @namespace   https://github.com/kcmertens/
-// @description Adds some extra checkboxes and features
-// @match       https://wf.xuerian.net/*
-// @version     0.0.1
-// @license     MIT
-// @grant       GM.getValue
-// @grant       GM.setValue
-// ==/UserScript==
-/* eslint-enable max-len */
-
 import '@/types/globals';
 
 // import * as $ from 'jquery';
