@@ -6,6 +6,10 @@ const dupes: {
     "Akbolto Prime Blueprint": [
         "Akbolto Prime Barrel",
         "Akbolto Prime Receiver",
+    ],
+    "Akjagara Prime Receiver": [
+        "Akjagara Prime Barrel",
+        "Akjagara Prime Receiver",
     ]
 };
 
