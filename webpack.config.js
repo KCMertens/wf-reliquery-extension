@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const package = require('./package.json');
 
-module.exports = {
+module.exports = (env, argv) => ({
 	entry: {
 		// Output multiple files, one for each main page - important!: also include the polyfills in the output bundle
 		'reliquary-extension.user': [
@@ -87,9 +87,16 @@ module.exports = {
 // @license     ${package.licence}
 // @grant       GM.getValue
 // @grant       GM.setValue
-// @downloadURL https://github.com/KCMertens/wf-reliquery-extension/raw/master/dist/reliquary-extension.user.js
-// @updateURL   https://github.com/KCMertens/wf-reliquery-extension/raw/master/dist/reliquary-extension.user.js
+// @downloadURL ${getUpdateUrl(argv)}
+// @updateURL   ${getUpdateUrl(argv)}
 // ==/UserScript==`)
 	],
-	devtool: 'source-map'
-};
+	devtool: argv.mode === 'development' ? 'eval-source-map' : 'source-map'
+});
+
+function getUpdateUrl(argv) {
+	switch (argv.mode) {
+		case 'production': return 'https://github.com/KCMertens/wf-reliquery-extension/raw/master/dist/reliquary-extension.user.js';
+		default: return 'http://localhost:8080/dist/reliquary-extension.user.js'
+	}
+}

@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.prod.js --mode production",
-    "start": "webpack-dev-server --config webpack.config.dev.js --mode development --port 80",
+    "build": "webpack --config webpack.config.js --mode production",
+    "start": "webpack-dev-server --config webpack.config.js --mode development",
     "node": "node",
     "git-add-dist": "git add dist"
   },
