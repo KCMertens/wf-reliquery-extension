@@ -7,10 +7,10 @@ const package = require('./package.json');
 module.exports = (env, argv) => ({
 	entry: {
 		// Output multiple files, one for each main page - important!: also include the polyfills in the output bundle
-		'reliquary-extension.user': [
+		'reliquary-extension.user': argv.mode === 'production' ? [
 			'./src/utils/enable-polyfills.ts',
 			'./src/index.ts'
-		],
+		] : './src/index.ts',
 	},
 	output: {
 		filename: '[name].js',

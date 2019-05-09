@@ -1,5 +1,55 @@
 import {Blueprint, BlueprintSet} from '@/types/types';
 
+type TemplateInstance<K, T> = HTMLElement&{
+    /** Toggle class "hidden" */
+    showIf(cond: boolean): void;
+    /** Toggle class "hidden" */
+    hideIf(cond: boolean): void;
+    /** Toggle class "hidden" */
+    show(): void;
+    /** Toggle class "hidden" */
+    hide(): void;
+
+    /** Get a child template */
+    _<N extends keyof T>(name: N): TemplateInstance<N, T[N]>;
+
+    /** Key of this element in its template parent */
+    _key: K;
+};
+
+type BaseTemplate<K, T> = {
+    _node: HTMLElement;
+    new: () => TemplateInstance<K, T>
+}
+type TemplateShape = {
+    wish: {
+        item: {
+            label: {
+                check: {},
+                text: {}
+            }
+        }
+        set: {
+            header: {
+                name: {}
+                wikilink: {}
+                type: {}
+            }
+            parts: {}
+        }
+    }
+    nav: {
+        // don't care about this
+    }
+}
+type TemplateHelper<P> = {
+    [K in keyof P]: BaseTemplate<K, P[K]>&TemplateHelper<P[K]>
+}
+type Template = TemplateHelper<TemplateShape>;
+
+var a: Template;
+
+
 declare global {
     /** Contains every blueprint + forma */
     const wishlistMap: {
@@ -42,5 +92,15 @@ declare global {
             /** Equal to wishlistedItems */
             wants: Blueprint[];
         }
+    }
+
+    const tpl: Template;
+
+    //----------------------------
+    // Own globals below this line
+    //----------------------------
+
+    const sets: {
+        [K in BlueprintSet]: HTMLDivElement;
     }
 }

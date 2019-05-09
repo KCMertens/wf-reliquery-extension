@@ -1,16 +1,19 @@
-import {Blueprint} from '@/types/types';
+import {Blueprint, BlueprintSet} from '@/types/types';
 
-const dupes: {
-    [K in Blueprint]?: Blueprint[];
+export const dupes: {
+    [K in BlueprintSet]?: Blueprint[];
 } = {
-    "Akbolto Prime Blueprint": [
+    "Akbolto Prime": [
         "Akbolto Prime Barrel",
         "Akbolto Prime Receiver",
     ],
-    "Akjagara Prime Receiver": [
+    "Akjagara Prime": [
         "Akjagara Prime Barrel",
         "Akjagara Prime Receiver",
-    ]
+    ],
 };
 
-export default dupes;
+export const dupeSets: BlueprintSet[] = [
+    "Akbronco Prime",
+    "Akbolto Prime"
+];

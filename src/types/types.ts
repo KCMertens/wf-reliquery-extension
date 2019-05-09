@@ -282,6 +282,7 @@ export type Blueprint =
 "Zephyr Prime Systems Blueprint";
 
 export type BlueprintSet =
+"Akbolto Prime"|
 "Akbronco Prime"|
 "Akjagara Prime"|
 "Aklex Prime"|
