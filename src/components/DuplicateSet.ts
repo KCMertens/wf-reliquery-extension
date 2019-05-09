@@ -11,7 +11,15 @@ export class DuplicateSet {
 
         const el = this.el = tpl.wish.set.new();
         el._('header')._('name').textContent = set;
-        el._('header')._('type')
+        el._('header')._('wikilink').setAttribute("href", "//warframe.wikia.com/wiki/" + set.replace(" ", "_"));
+
+        const img = this.referenceSet.querySelector('img')!.getAttribute('src');
+        if (img) {
+            el._('header')._('type').setAttribute('src', img)
+        }
+
+        // todo dupe parts
+
 
         el.style.outline = '1px solid red';
 
