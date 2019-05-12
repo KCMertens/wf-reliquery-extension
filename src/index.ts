@@ -8,6 +8,7 @@ import { DuplicatePart } from './components/DuplicatePart';
 
 import initGlobals from '@/utils/globals';
 import { DuplicateSet } from './components/DuplicateSet';
+import { CompletableSet } from './components/CompletableSet';
 
 function main() {
     initGlobals();
@@ -21,6 +22,9 @@ function main() {
     for (const set of dupeSets) {
         new DuplicateSet(set);
     }
+
+    Object.keys(sets).forEach((s: BlueprintSet) => new CompletableSet(s, false));
+    Object.keys(duplicateSets).forEach((s: BlueprintSet) => new CompletableSet(s, true));
 }
 
 const interval = setInterval(() => {

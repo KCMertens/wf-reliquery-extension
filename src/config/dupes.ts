@@ -14,6 +14,5 @@ export const dupes: {
 };
 
 export const dupeSets: BlueprintSet[] = [
-    "Akbronco Prime",
-    "Akbolto Prime"
+    "Bronco Prime",
 ];

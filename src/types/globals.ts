@@ -103,4 +103,6 @@ declare global {
     const sets: {
         [K in BlueprintSet]: HTMLDivElement;
     }
+
+    const duplicateSets: typeof sets;
 }
