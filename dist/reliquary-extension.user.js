@@ -4,7 +4,7 @@
  * // @namespace   https://github.com/kcmertens/
  * // @description Warframe reliquary extension to add some extra functionality
  * // @match       https://wf.xuerian.net/*
- * // @version     1.0.0
+ * // @version     1.0.1
  * // @license     undefined
  * // @grant       GM.getValue
  * // @grant       GM.setValue
