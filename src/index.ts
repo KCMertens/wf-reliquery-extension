@@ -25,6 +25,24 @@ function main() {
 
     Object.keys(sets).forEach((s: BlueprintSet) => new CompletableSet(s, false));
     Object.keys(duplicateSets).forEach((s: BlueprintSet) => new CompletableSet(s, true));
+
+    // @ts-ignore
+    const originalRenderReliquary = renderReliquary;
+
+    // @ts-ignore
+    renderReliquary = function(tokenArray: Array<{wants: Blueprint[]}>) {
+        originalRenderReliquary(tokenArray.map(data => {
+            const joinedWants = new Set<Blueprint>();
+
+            data.wants.forEach(v => joinedWants.add(v));
+            duplicateParts.filter(p => p.isChecked()).forEach(p => joinedWants.add(p.id));
+
+            return {
+                ...data,
+                wants: Array.of(...joinedWants.keys())
+            }
+        }));
+    };
 }
 
 const interval = setInterval(() => {

@@ -3,11 +3,15 @@ import { createElement, insertAfter } from '@/utils/utils';
 import { duplicatePartKey } from './componentUtils';
 
 export class DuplicatePart {
-    private el: HTMLElement;
-    private checkbox: HTMLInputElement;
-    private setcontainer: HTMLElement;
+    public el: HTMLElement;
+    public checkbox: HTMLInputElement;
+    public setcontainer: HTMLElement;
 
-    constructor(private set: BlueprintSet, private id: Blueprint, isDuplicateSet: boolean = false) {
+    constructor(
+        public set: BlueprintSet,
+        public id: Blueprint,
+        isDuplicateSet: boolean = false
+    ) {
         const originalSetContainer = sets[set];
         this.setcontainer = isDuplicateSet ? duplicateSets[set] : originalSetContainer;
 
@@ -17,9 +21,9 @@ export class DuplicatePart {
 
         this.el = createElement(`
             <div class="item">
-                <label style="outline: 1px solid red;">
+                <label>
                     <input type="checkbox">
-                    <span>${displayName} (duplicate)</span>
+                    <span>${displayName}</span>
                 </label>
                 </div>
         `)
@@ -27,7 +31,6 @@ export class DuplicatePart {
 
         const originalElement = isDuplicateSet ? null : this.setcontainer.querySelector(`input[name="wants[${id}]"]`)!.closest('.item')!;
         originalElement ? insertAfter(this.el, originalElement) : this.setcontainer.append(this.el);
-
 
         // TODO
         const storageKey = duplicatePartKey(set, isDuplicateSet, id);
@@ -42,5 +45,11 @@ export class DuplicatePart {
             this.checkbox.checked = checked;
             this.checkbox.dispatchEvent(new Event('change'));
         }
+
+        duplicateParts.push(this);
+    }
+
+    public isChecked() {
+        return this.checkbox.checked;
     }
 }

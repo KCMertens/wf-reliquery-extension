@@ -20,7 +20,7 @@ export class DuplicateSet {
             el._('header')._('type').setAttribute('src', img)
         }
 
-        el.style.outline = '1px solid red';
+        // el.style.outline = '1px solid red';
         el.classList.toggle('vaulted', this.referenceSet.classList.contains('vaulted'));
 
         // todo dupe parts

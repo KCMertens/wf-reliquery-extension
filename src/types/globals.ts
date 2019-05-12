@@ -1,4 +1,5 @@
 import {Blueprint, BlueprintSet} from '@/types/types';
+import { DuplicatePart } from '@/components/DuplicatePart';
 
 type TemplateInstance<K, T> = HTMLElement&{
     /** Toggle class "hidden" */
@@ -105,4 +106,6 @@ declare global {
     }
 
     const duplicateSets: typeof sets;
+
+    const duplicateParts: DuplicatePart[];
 }
