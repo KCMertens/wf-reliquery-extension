@@ -18,6 +18,34 @@ addedStyles.innerHTML = `
 .set.completed .name {
     color: gold!important;
 }
+
+#completedrelics > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+#completedrelics {
+    margin-top: 15px;
+}
+
+.completed-relics-tab {
+    padding: 8px;
+}
+
+#completedrelics > ul > li {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+#completedrelics > ul > li > a {
+    padding: 4px 8px;
+    cursor: pointer;
+}
+#completedrelics > ul > li > a+a {
+    margin-left: 15px;
+}
 `
 document.body.appendChild(addedStyles);
 

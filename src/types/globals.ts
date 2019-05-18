@@ -93,6 +93,41 @@ declare global {
             /** Equal to wishlistedItems */
             wants: Blueprint[];
         }
+    };
+
+    const relicData: {
+        items: {
+            [K in Blueprint]: {
+                name: K,
+                relics: {
+                    [relicName: string]: {
+                        Exceptional: number;
+                        Flawless: number;
+                        Intact: number;
+                        Radiant: number;
+                    }
+                }
+            }
+        }
+        relics: {
+            [relicName: string]: {
+                name: string;
+                rewards: Array<{
+                    name: Blueprint;
+                    chance: {
+                        Exceptional: number;
+                        Flawless: number;
+                        Intact: number;
+                        Radiant: number;
+                    }
+                }>,
+                sources: any[],
+                vaulted: boolean
+            }
+        }
+        // todo
+        sources: {}
+        tableNameMap: {}
     }
 
     const tpl: Template;

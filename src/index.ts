@@ -9,6 +9,7 @@ import { DuplicatePart } from './components/DuplicatePart';
 import initGlobals from '@/utils/globals';
 import { DuplicateSet } from './components/DuplicateSet';
 import { CompletableSet } from './components/CompletableSet';
+import { createElement, insertAfter } from './utils/utils';
 
 function main() {
     initGlobals();
@@ -26,23 +27,61 @@ function main() {
     Object.keys(sets).forEach((s: BlueprintSet) => new CompletableSet(s, false));
     Object.keys(duplicateSets).forEach((s: BlueprintSet) => new CompletableSet(s, true));
 
+
+
     // @ts-ignore
     const originalRenderReliquary = renderReliquary;
 
     // @ts-ignore
     renderReliquary = function(tokenArray: Array<{wants: Blueprint[]}>) {
-        originalRenderReliquary(tokenArray.map(data => {
-            const joinedWants = new Set<Blueprint>();
+        const joinedWants = new Set<Blueprint>();
+        tokenArray.forEach(data => data.wants.forEach(v => joinedWants.add(v)))
+        duplicateParts.filter(p => p.isChecked()).forEach(p => joinedWants.add(p.id));
 
-            data.wants.forEach(v => joinedWants.add(v));
-            duplicateParts.filter(p => p.isChecked()).forEach(p => joinedWants.add(p.id));
+        listCompletedRelics(joinedWants);
 
-            return {
-                ...data,
-                wants: Array.of(...joinedWants.keys())
-            }
-        }));
+        originalRenderReliquary(tokenArray.map(data => ({
+            ...data,
+            wants: Array.of(...joinedWants.keys())
+        })));
     };
+}
+
+
+function listCompletedRelics(wants: Set<Blueprint>) {
+    const old = document.querySelector('#completedrelics');
+    if (old) { old.parentElement!.removeChild(old); }
+
+
+    const completedRelics = Object.values(relicData.relics).filter(r => {
+        return r.rewards.every(rw => !wants.has(rw.name));
+    })
+    .map(r => r.name);
+
+    const types = ['Lith', 'Meso', 'Neo', 'Axi'];
+    const el = createElement(`
+        <div id="completedrelics">
+            <ul style="list-style: none;">${types.map((s, i) => `<li><a data-target="completed-${s}">${s}</a></li>`).join('')}</ul>
+            ${
+                types.map((t, i) => `
+                    <div class="completed-relics-tab" id="completed-${t}" style="display:${i === 0 ? 'block': 'none'}">
+                        ${
+                            completedRelics.filter(r => r.startsWith(t)).sort().map(r => `<div>${r} ${relicData.relics[r].vaulted ? '(v)' : ''}</div>`).join('')
+                        }
+                    </div>
+                `).join('')
+            }
+        </div>
+    `)
+
+    Array.of(...el.querySelectorAll('a[data-target]')).forEach((e: HTMLElement) => {
+        const targetId = e.dataset.target;
+        e.addEventListener('click', event => {
+            document.querySelectorAll('.completed-relics-tab').forEach((el: HTMLDivElement) => el.style.display = el.id === targetId ? 'block' : 'none');
+        })
+    })
+
+    insertAfter(el, document.querySelector('.reliquary .legend')!);
 }
 
 const interval = setInterval(() => {
