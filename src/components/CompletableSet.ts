@@ -1,53 +1,6 @@
 import { BlueprintSet } from "@/types/types";
 import { createElement, insertAfter } from "@/utils/utils";
 import { completableKey } from '@/components/componentUtils';
-import { inherits } from "util";
-
-
-const addedStyles = document.createElement('style');
-addedStyles.innerHTML = `
-.set.completed {
-    opacity: 0.5;
-    border-image: linear-gradient(to bottom, gold, transparent 35%, transparent 90%, gold) 1!important;
-}
-
-.set.completed:hover {
-    box-shadow: 0px 0px 15px 2px gold!important;
-}
-
-.set.completed .name {
-    color: gold!important;
-}
-
-#completedrelics > ul {
-    list-style: none;
-    padding: 0;
-    margin: 0
-}
-
-#completedrelics {
-    margin-top: 15px;
-}
-
-.completed-relics-tab {
-    padding: 8px;
-}
-
-#completedrelics > ul > li {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-}
-
-#completedrelics > ul > li > a {
-    padding: 4px 8px;
-    cursor: pointer;
-}
-#completedrelics > ul > li > a+a {
-    margin-left: 15px;
-}
-`
-document.body.appendChild(addedStyles);
 
 export class CompletableSet {
     private container: HTMLDivElement;
