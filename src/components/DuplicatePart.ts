@@ -1,6 +1,6 @@
 import {Blueprint, BlueprintSet} from '@/types/types';
 import { createElement, insertAfter } from '@/utils/utils';
-import { duplicatePartKey } from './componentUtils';
+import { duplicatePartKey, duplicatePartKeyOld } from './componentUtils';
 
 export class DuplicatePart {
     public el: HTMLElement;
@@ -10,7 +10,7 @@ export class DuplicatePart {
     constructor(
         public set: BlueprintSet,
         public id: Blueprint,
-        isDuplicateSet: boolean = false
+        public isDuplicateSet: boolean = false
     ) {
         const originalSetContainer = sets[set];
         this.setcontainer = isDuplicateSet ? duplicateSets[set] : originalSetContainer;
@@ -25,31 +25,48 @@ export class DuplicatePart {
                     <input type="checkbox">
                     <span>${displayName}</span>
                 </label>
-                </div>
+            </div>
         `)
         this.checkbox = this.el.querySelector('input')!;
 
         const originalElement = isDuplicateSet ? null : this.setcontainer.querySelector(`input[name="wants[${id}]"]`)!.closest('.item')!;
         originalElement ? insertAfter(this.el, originalElement) : this.setcontainer.append(this.el);
 
-        // TODO
-        const storageKey = duplicatePartKey(set, isDuplicateSet, id);
-        this.checkbox.addEventListener('change', e => {
-            const checked = (e.target as HTMLInputElement).checked
-            localStorage.setItem(storageKey, JSON.stringify(checked));
-            this.el.classList.toggle('wanted', checked);
-        })
 
-        {
-            const checked = JSON.parse(localStorage.getItem(storageKey) || 'false');
-            this.checkbox.checked = checked;
-            this.checkbox.dispatchEvent(new Event('change'));
-        }
+        // TODO
+        this.checkbox.addEventListener('change', e => {
+            const checked = (e.target as HTMLInputElement).checked;
+            this.save(checked);
+            debugger;
+            this.el.classList.toggle('wanted', checked);
+        });
+
+        const checked = this.load<boolean>();
+        this.checkbox.checked = checked;
+        this.checkbox.dispatchEvent(new Event('change'));
 
         duplicateParts.push(this);
     }
 
-    public isChecked() {
+    load<T>(): T {
+        const oldKey = duplicatePartKeyOld(this.set, this.isDuplicateSet, this.id);
+        const newKey = duplicatePartKey(this.set, this.isDuplicateSet, this.id);
+        if (localStorage.getItem(oldKey) != null) {
+            const state = localStorage.getItem(oldKey)!;
+            localStorage.setItem(newKey, state);
+            localStorage.removeItem(oldKey);
+            return  JSON.parse(state);
+        } else {
+            return JSON.parse(localStorage.getItem(newKey) || 'false');
+        }
+    }
+
+    save<T>(t: T) {
+        localStorage.setItem(duplicatePartKey(this.set, this.isDuplicateSet, this.id), JSON.stringify(t));
+    }
+
+    isChecked() {
         return this.checkbox.checked;
     }
+
 }

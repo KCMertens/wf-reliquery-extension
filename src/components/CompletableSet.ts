@@ -1,6 +1,6 @@
 import { BlueprintSet } from "@/types/types";
 import { createElement, insertAfter } from "@/utils/utils";
-import { completableKey } from '@/components/componentUtils';
+import { completableKey, completableKeyOld } from '@/components/componentUtils';
 
 export class CompletableSet {
     private container: HTMLDivElement;
@@ -13,18 +13,31 @@ export class CompletableSet {
         const completeCheckbox = createElement('<input type="checkbox" class="completed" title="Set completed">') as HTMLInputElement;
         insertAfter(completeCheckbox, wikilink);
 
-        const storageKey = completableKey(set, isDuplicate);
         completeCheckbox.addEventListener('change', e => {
-            const checked = (e.target as HTMLInputElement).checked
-            localStorage.setItem(storageKey, JSON.stringify(checked));
+            const checked = (e.target as HTMLInputElement).checked;
+            this.save(checked);
             this.container.classList.toggle('completed', checked);
-        })
+        });
 
-        {
-            const checked = JSON.parse(localStorage.getItem(storageKey) || 'false');
-            completeCheckbox.checked = checked;
-            completeCheckbox.dispatchEvent(new Event('change'));
+        const checked = this.load<boolean>();
+        completeCheckbox.checked = checked;
+        completeCheckbox.dispatchEvent(new Event('change'));
+    }
+
+    load<T>(): T {
+        const oldKey = completableKeyOld(this.set, this.isDuplicate);
+        const newKey = completableKey(this.set, this.isDuplicate);
+        if (localStorage.getItem(oldKey) != null) {
+            const state = localStorage.getItem(oldKey)!;
+            localStorage.setItem(newKey, state);
+            localStorage.removeItem(oldKey);
+            return  JSON.parse(state);
+        } else {
+            return JSON.parse(localStorage.getItem(newKey) || 'false');
         }
     }
 
+    save<T>(t: T) {
+        localStorage.setItem(completableKey(this.set, this.isDuplicate), JSON.stringify(t));
+    }
 }
