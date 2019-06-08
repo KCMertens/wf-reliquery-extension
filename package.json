@@ -8,7 +8,9 @@
     "build": "webpack --config webpack.config.js --mode production",
     "start": "webpack-dev-server --config webpack.config.js --mode development --host 0.0.0.0",
     "node": "node",
-    "git-add-dist": "git add dist"
+    "git-pre-build": "git stash --include-untracked --keep-index",
+    "git-add-dist": "git add dist",
+    "git-post-build": "git stash pop"
   },
   "author": "KCMertens",
   "license": "Apache-2.0",
@@ -39,7 +41,9 @@
   },
   "dependencies": {},
   "pre-commit": [
+    "git-pre-build",
     "build",
-    "git-add-dist"
+    "git-add-dist",
+    "git-post-build"
   ]
 }

@@ -37,7 +37,6 @@ export class DuplicatePart {
         this.checkbox.addEventListener('change', e => {
             const checked = (e.target as HTMLInputElement).checked;
             this.save(checked);
-            debugger;
             this.el.classList.toggle('wanted', checked);
         });
 
