@@ -19,16 +19,20 @@ export class CompletableSet {
             this.container.classList.toggle('completed', checked);
         });
 
-        const checked = this.load<boolean>();
+        const checked = this.load();
         completeCheckbox.checked = checked;
         completeCheckbox.dispatchEvent(new Event('change'));
+
+        completableSets.push(this);
     }
 
-    load<T>(): T {
-        return JSON.parse(localStorage.getItem(completableKey(this.set, this.isDuplicate)) || 'false');
+    load(): boolean {
+        return JSON.parse(localStorage.getItem(this.key) || 'false');
     }
 
-    save<T>(t: T) {
-        localStorage.setItem(completableKey(this.set, this.isDuplicate), JSON.stringify(t));
+    save(t: boolean) {
+        localStorage.setItem(this.key, JSON.stringify(t));
     }
+
+    get key() { return completableKey(this.set, this.isDuplicate); }
 }

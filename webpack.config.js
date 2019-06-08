@@ -41,9 +41,8 @@ module.exports = (env, argv) => ({
 			]
 		}, {
 			test: /\.ts$/,
-			use: [{
-				loader: 'babel-loader',
-			}, {
+			use: [argv.mode === 'production' ? { loader: 'babel-loader' } : undefined,
+			{
 				loader: 'ts-loader',
 				options: {
 					/*
@@ -63,7 +62,7 @@ module.exports = (env, argv) => ({
 					transpileOnly: true,
 					appendTsSuffixTo: [/\.vue$/],
 				}
-			}]
+			}].filter(v => v != null)
 		}, {
 			test: /\.js$/,
 			exclude: /node_modules/,

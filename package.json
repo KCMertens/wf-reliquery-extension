@@ -1,12 +1,12 @@
 {
   "name": "wf-reliquary-helper",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Warframe reliquary extension to add some extra functionality",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js --mode production",
-    "start": "webpack-dev-server --config webpack.config.js --mode development --host 0.0.0.0",
+    "start": "webpack-dev-server --config webpack.config.js --mode development --host 0.0.0.0 --no-inline --no-hot",
     "node": "node",
     "git-pre-build": "git stash --include-untracked --keep-index",
     "git-add-dist": "git add dist",
@@ -18,6 +18,7 @@
     "@babel/core": "^7.1.2",
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
+    "@types/urijs": "^1.19.1",
     "babel-loader": "^8.0.0-beta.6",
     "babel-plugin-transform-es2015-modules-commonjs-simple": "^6.7.4",
     "circular-dependency-plugin": "^5.0.2",
@@ -39,7 +40,9 @@
     "webpack-dev-server": "^3.1.5",
     "whatwg-fetch": "^3.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "urijs": "^1.19.1"
+  },
   "pre-commit": [
     "git-pre-build",
     "build",

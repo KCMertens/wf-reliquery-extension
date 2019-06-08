@@ -40,23 +40,24 @@ export class DuplicatePart {
             this.el.classList.toggle('wanted', checked);
         });
 
-        const checked = this.load<boolean>();
+        const checked = this.load();
         this.checkbox.checked = checked;
         this.checkbox.dispatchEvent(new Event('change'));
 
         duplicateParts.push(this);
     }
 
-    load<T>(): T {
-        return JSON.parse(localStorage.getItem(duplicatePartKey(this.set, this.isDuplicateSet, this.id)) || 'false');
+    load(): boolean {
+        return JSON.parse(localStorage.getItem(this.key) || 'false');
     }
 
-    save<T>(t: T) {
-        localStorage.setItem(duplicatePartKey(this.set, this.isDuplicateSet, this.id), JSON.stringify(t));
+    save(t: boolean) {
+        localStorage.setItem(this.key, JSON.stringify(t));
     }
 
     isChecked() {
         return this.checkbox.checked;
     }
 
+    get key() { return duplicatePartKey(this.set, this.isDuplicateSet, this.id); }
 }

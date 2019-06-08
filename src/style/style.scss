@@ -2,7 +2,6 @@
 	&#{$class} {
 		opacity: 0.5;
 		border-image: linear-gradient(to bottom, $color, transparent 35%, transparent 90%, $color) 1!important;
-		transition: box-shadow ease-in-out 0.2s;
 
 		.name {
 			color: $color!important;
@@ -18,9 +17,16 @@
 
 .set {
 	@include completeSet(".completed", gold);
-	@include completeSet(".completed.vaulted", goldenrod);
+	@include completeSet(".completed.vaulted", darkgoldenrod);
+
+	transition: all ease-in-out 0.2s;
 }
 
+.share {
+	border-image: linear-gradient(to bottom, gold, transparent 35%, transparent 90%, gold) 1!important;
+	padding-left: 8px;
+	padding-right: 8px;
+}
 
 #completedrelics {
 	margin-top: 15px;
