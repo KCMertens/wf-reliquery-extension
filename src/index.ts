@@ -13,7 +13,6 @@ import { createElement, insertAfter } from '@/utils/utils';
 
 function main() {
     initGlobals();
-    migrate();
 
     for(const [set, dupedParts] of Object.entries(dupes) as Array<[BlueprintSet, Blueprint[]]>) {
         dupedParts.forEach(bp => {
@@ -120,8 +119,4 @@ if (!originalSetTabImpl) {
     })
 } else {
     (unsafeWindow as any).setTab = setTabImpl;
-}
-
-function migrate() {
-
 }

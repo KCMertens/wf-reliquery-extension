@@ -1,6 +1,6 @@
 import {Blueprint, BlueprintSet} from '@/types/types';
 import { createElement, insertAfter } from '@/utils/utils';
-import { duplicatePartKey, duplicatePartKeyOld } from './componentUtils';
+import { duplicatePartKey } from './componentUtils';
 
 export class DuplicatePart {
     public el: HTMLElement;
@@ -49,16 +49,7 @@ export class DuplicatePart {
     }
 
     load<T>(): T {
-        const oldKey = duplicatePartKeyOld(this.set, this.isDuplicateSet, this.id);
-        const newKey = duplicatePartKey(this.set, this.isDuplicateSet, this.id);
-        if (localStorage.getItem(oldKey) != null) {
-            const state = localStorage.getItem(oldKey)!;
-            localStorage.setItem(newKey, state);
-            localStorage.removeItem(oldKey);
-            return  JSON.parse(state);
-        } else {
-            return JSON.parse(localStorage.getItem(newKey) || 'false');
-        }
+        return JSON.parse(localStorage.getItem(duplicatePartKey(this.set, this.isDuplicateSet, this.id)) || 'false');
     }
 
     save<T>(t: T) {

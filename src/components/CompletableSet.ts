@@ -1,6 +1,6 @@
 import { BlueprintSet } from "@/types/types";
 import { createElement, insertAfter } from "@/utils/utils";
-import { completableKey, completableKeyOld } from '@/components/componentUtils';
+import { completableKey } from '@/components/componentUtils';
 
 export class CompletableSet {
     private container: HTMLDivElement;
@@ -25,16 +25,7 @@ export class CompletableSet {
     }
 
     load<T>(): T {
-        const oldKey = completableKeyOld(this.set, this.isDuplicate);
-        const newKey = completableKey(this.set, this.isDuplicate);
-        if (localStorage.getItem(oldKey) != null) {
-            const state = localStorage.getItem(oldKey)!;
-            localStorage.setItem(newKey, state);
-            localStorage.removeItem(oldKey);
-            return  JSON.parse(state);
-        } else {
-            return JSON.parse(localStorage.getItem(newKey) || 'false');
-        }
+        return JSON.parse(localStorage.getItem(completableKey(this.set, this.isDuplicate)) || 'false');
     }
 
     save<T>(t: T) {
