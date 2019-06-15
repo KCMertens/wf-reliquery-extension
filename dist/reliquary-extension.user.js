@@ -3,8 +3,8 @@
  * // @name        wf-reliquary-helper
  * // @namespace   https://github.com/kcmertens/
  * // @description Warframe reliquary extension to add some extra functionality
- * // @match       https://wf.xuerian.net/*
- * // @version     1.4.0
+ * // @match       *://wf.xuerian.net/*
+ * // @version     1.4.1
  * // @license     undefined
  * // @grant       GM.getValue
  * // @grant       GM.setValue

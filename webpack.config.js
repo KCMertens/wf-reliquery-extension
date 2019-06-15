@@ -82,7 +82,7 @@ module.exports = (env, argv) => ({
 // @name        ${package.name}
 // @namespace   https://github.com/kcmertens/
 // @description ${package.description}
-// @match       https://wf.xuerian.net/*
+// @match       *://wf.xuerian.net/*
 // @version     ${package.version}
 // @license     ${package.licence}
 // @grant       GM.getValue
