@@ -53,6 +53,9 @@ export const dupes: {
         "Nami Skyla Prime Blade",
         "Nami Skyla Prime Handle"
     ],
+    "Ninkondi Prime": [
+        "Ninkondi Prime Handle"
+    ],
     "Orthos Prime": [
         "Orthos Prime Blade"
     ],

@@ -165,6 +165,9 @@ export type Blueprint =
 "Nikana Prime Blade"|
 "Nikana Prime Blueprint"|
 "Nikana Prime Hilt"|
+"Ninkondi Prime Blueprint"|
+"Ninkondi Prime Chain"|
+"Ninkondi Prime Handle"|
 "Nova Prime Blueprint"|
 "Nova Prime Chassis Blueprint"|
 "Nova Prime Neuroptics Blueprint"|
@@ -329,6 +332,7 @@ export type BlueprintSet =
 "Nami Skyla Prime"|
 "Nekros Prime"|
 "Nikana Prime"|
+"Ninkondi Prime"|
 "Nova Prime"|
 "Nyx Prime"|
 "Oberon Prime"|
