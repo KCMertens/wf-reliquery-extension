@@ -59,6 +59,10 @@ export const dupes: {
     "Orthos Prime": [
         "Orthos Prime Blade"
     ],
+    "Tekko Prime": [
+        "Tekko Prime Blade",
+        "Tekko Prime Gauntlet"
+    ],
     "Tipedo Prime": [
         "Tipedo Prime Ornament"
     ],

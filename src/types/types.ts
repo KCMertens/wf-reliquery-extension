@@ -24,7 +24,10 @@ export type Blueprint =
 "Ash Prime Chassis Blueprint"|
 "Ash Prime Neuroptics Blueprint"|
 "Ash Prime Systems Blueprint"|
-"Ballistica Prime Blueprint"|
+"Atlas Prime Blueprint"|
+"Atlas Prime Chassis Blueprint"|
+"Atlas Prime Neuroptics Blueprint"|
+"Atlas Prime Systems Blueprint"|"Ballistica Prime Blueprint"|
 "Ballistica Prime Lower Limb"|
 "Ballistica Prime Receiver"|
 "Ballistica Prime String"|
@@ -74,6 +77,10 @@ export type Blueprint =
 "Destreza Prime Blade"|
 "Destreza Prime Blueprint"|
 "Destreza Prime Handle"|
+"Dethcube Prime Blueprint"|
+"Dethcube Prime Carapace"|
+"Dethcube Prime Cerebrum"|
+"Dethcube Prime Systems"|
 "Dual Kamas Prime Blade"|
 "Dual Kamas Prime Blueprint"|
 "Dual Kamas Prime Handle"|
@@ -238,6 +245,9 @@ export type Blueprint =
 "Sybaris Prime Blueprint"|
 "Sybaris Prime Receiver"|
 "Sybaris Prime Stock"|
+"Tekko Prime Blueprint"|
+"Tekko Prime Blade"|
+"Tekko Prime Gauntlet"|
 "Tiberon Prime Barrel"|
 "Tiberon Prime Blueprint"|
 "Tiberon Prime Receiver"|
@@ -293,6 +303,7 @@ export type BlueprintSet =
 "Akvasto Prime"|
 "Ankyros Prime"|
 "Ash Prime"|
+"Atlas Prime"|
 "Ballistica Prime"|
 "Banshee Prime"|
 "Bo Prime"|
@@ -306,6 +317,7 @@ export type BlueprintSet =
 "Chroma Prime"|
 "Dakra Prime"|
 "Destreza Prime"|
+"Dethcube Prime"|
 "Dual Kamas Prime"|
 "Ember Prime"|
 "Equinox Prime"|
@@ -352,6 +364,7 @@ export type BlueprintSet =
 "Spira Prime"|
 "Stradavar Prime"|
 "Sybaris Prime"|
+"Tekko Prime"|
 "Tiberon Prime"|
 "Tigris Prime"|
 "Tipedo Prime"|
