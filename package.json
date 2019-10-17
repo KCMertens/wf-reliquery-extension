@@ -1,6 +1,6 @@
 {
   "name": "wf-reliquary-helper",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Warframe reliquary extension to add some extra functionality",
   "private": true,
   "scripts": {
