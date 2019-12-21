@@ -11,6 +11,10 @@ export const dupes: {
         "Akjagara Prime Barrel",
         "Akjagara Prime Receiver",
     ],
+    "Aksomati Prime": [
+        "Aksomati Prime Barrel",
+        "Aksomati Prime Receiver"
+    ],
     "Akstiletto Prime": [
         "Akstiletto Prime Barrel",
         "Akstiletto Prime Receiver"

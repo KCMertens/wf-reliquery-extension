@@ -11,6 +11,10 @@ export type Blueprint =
 "Akjagara Prime Receiver"|
 "Aklex Prime Blueprint"|
 "Aklex Prime Link"|
+"Aksomati Prime Barrel"|
+"Aksomati Prime Blueprint"|
+"Aksomati Prime Link"|
+"Aksomati Prime Receiver"|
 "Akstiletto Prime Barrel"|
 "Akstiletto Prime Blueprint"|
 "Akstiletto Prime Link"|
@@ -36,6 +40,10 @@ export type Blueprint =
 "Banshee Prime Chassis Blueprint"|
 "Banshee Prime Neuroptics Blueprint"|
 "Banshee Prime Systems Blueprint"|
+"Baza Prime Barrel"|
+"Baza Prime Blueprint"|
+"Baza Prime Receiver"|
+"Baza Prime Stock"|
 "Bo Prime Blueprint"|
 "Bo Prime Handle"|
 "Bo Prime Ornament"|
@@ -126,6 +134,10 @@ export type Blueprint =
 "Hydroid Prime Chassis Blueprint"|
 "Hydroid Prime Neuroptics Blueprint"|
 "Hydroid Prime Systems Blueprint"|
+"Ivara Prime Blueprint"|
+"Ivara Prime Chassis Blueprint"|
+"Ivara Prime Neuroptics Blueprint"|
+"Ivara Prime Systems Blueprint"|
 "Kavasa Prime Band"|
 "Kavasa Prime Buckle"|
 "Kavasa Prime Kubrow Collar Blueprint"|
@@ -299,12 +311,14 @@ export type BlueprintSet =
 "Akbronco Prime"|
 "Akjagara Prime"|
 "Aklex Prime"|
+"Aksomati Prime"|
 "Akstiletto Prime"|
 "Akvasto Prime"|
 "Ankyros Prime"|
 "Ash Prime"|
 "Atlas Prime"|
 "Ballistica Prime"|
+"Baza Prime"|
 "Banshee Prime"|
 "Bo Prime"|
 "Boar Prime"|
@@ -331,6 +345,7 @@ export type BlueprintSet =
 "Helios Prime"|
 "Hikou Prime"|
 "Hydroid Prime"|
+"Ivara Prime"|
 "Kavasa Prime"|
 "Kogake Prime"|
 "Kronen Prime"|
