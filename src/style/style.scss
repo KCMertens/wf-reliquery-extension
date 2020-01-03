@@ -61,6 +61,8 @@
 	.completed-relics-tab {
 		padding: 8px;
 		display: none;
+		max-height: calc(20em + 12px);
+		overflow: auto;
 		&.active {
 			display: block;
 		}
