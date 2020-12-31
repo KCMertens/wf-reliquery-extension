@@ -41,7 +41,7 @@
     "whatwg-fetch": "^3.0.0"
   },
   "dependencies": {
-    "urijs": "^1.19.1"
+    "urijs": "^1.19.4"
   },
   "pre-commit": [
     "git-pre-build",
